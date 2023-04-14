@@ -6,14 +6,6 @@ from django.contrib import messages
 from django.contrib.auth.models import User, auth
 
 
-# index templates
-def indexView(request):
-    return render(request,'index.html')
-
-def logoutView(request):
-    auth.logout(request)
-    return redirect('index_url')
-
 def loginView(request):
     if request.method=="POST":
         username=request.POST['username']
@@ -57,6 +49,17 @@ def registerView(request):
             return HttpResponseRedirect(request.path_info)
     else:
         return render(request,'login.html')
+
+def logoutView(request):
+    auth.logout(request)
+    return redirect('index_url')
+
+
+# index templates
+@login_required(login_url='login_url')
+def indexView(request):
+    return render(request,'index.html')
+
 
 # dashboard templates
 @login_required(login_url='login_url')
