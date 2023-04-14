@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Home{% endblock %}</title>
+
+    <!-- stylesheet -->
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/index-style.css' %}">
+    
+    <!-- font -->
+    <link href='https://fonts.googleapis.com/css?family=Orbitron' rel='stylesheet'>
+</head>
+<body>
+    <div class="main">
+        <div class="cotainer">
+            <div class="user-name">
+                <h1 class="typing-demo">
+                    {% block name %}
+                    Welcome to Data Center 
+                    <span>{{user.username}}</span>
+                    {% endblock%}
+                </h1>
+            </div>
+
+            {% block content %}
+                <div class="box-container">
+                    <a class="box-item1" href="{% url 'dash_bom_url' %}">
+                        <h2>BOM Comparison</h2>
+                    </a>
+                    <a class="box-item2" href="{% url 'register_url' %}">
+                        <h2>Cost Review</h2>
+                    </a>
+                    <a class="box-item3" href="{% url 'register_url' %}">
+                        <h2>Coming Soon!</h2>
+                    </a>
+                    <a class="box-item4" href="{% url 'register_url' %}">
+                        <h2>Coming Soon!</h2>
+                    </a>
+                </div>
+            {% endblock%}
+
+        </div>
+        <div class="navigator">
+            <div class="user-banner">
+                {% if user.is_authenticated %}
+                    <button>
+                        <a href="{% url 'logout_url' %}">Logout</a>
+                    </button>
+                {% else %}
+                    <button>
+                        <a href="{% url 'login_url' %}">Login</a>
+                    </button>
+                    <button>
+                        <a href="{% url 'register_url' %}">Sign Up</a>
+                    </button>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <h5> 
+            Author : LGEUS TN R&D Department Eunbi Yoon |  Email : 
+            <a href = "mailto: eunbi1.yoon@lge.com"> eunbi1.yoon@lge.com</a>
+        </h5>
+    </footer>
+    
+</body>
+</html>

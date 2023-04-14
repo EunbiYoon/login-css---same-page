@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BOM Comparison</title>
+
+      <!-- stylesheet -->
+      {% load static %}
+      <link rel="stylesheet" href="{% static 'css/dash-style.css' %}">
+  
+      <!-- javascript -->
+      <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+      {% load static %}
+      <script src="{% static 'js/script.js' %}" type="text/javascript"></script>  
+
+      <!-- font -->
+      <link href='https://fonts.googleapis.com/css?family=Orbitron' rel='stylesheet'>
+
+</head>
+<body>
+  <div class="top">
+    <div class="sidebar">
+    </div>
+    <div class="cotainer">
+      <div class="user-name">
+        <h1 class="typing-demo">
+            {% block name %}
+            BOM Comparison Dashboard
+            <span>{{user.username}}</span>
+            {% endblock%}
+        </h1>
+      </div>
+    </div>
+    <div class="navigator">
+      <div class="user-banner">
+        {% if user.is_authenticated %}
+            <button>
+                <a href="{% url 'logout_url' %}">Logout</a>
+            </button>
+        {% else %}
+            <button>
+                <a href="{% url 'login_url' %}">Login</a>
+            </button>
+            <button>
+                <a href="{% url 'register_url' %}">Sign Up</a>
+            </button>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+
+  <div class="main">
+    <div class="sidebar">
+      <div class="menu">
+        <div class="detail">Top Loader</div>
+        <div class="detail">Front Loader</div>
+        <div class="detail">Dryer</div>
+      </div>
+      <div class="menu">
+        <div class="detail">Send Email</div>
+        <div class="detail">Previous Report</div>
+        <div class="detail">Save Report</div>
+      </div>
+    </div>
+    <div class="cotainer">
+      <div>
+        <canvas class="myChart" id="myChart">
+        </canvas>
+      </div>
+    </div>
+    <div class="navigator">
+      <div class="menu">
+        <div class="detail">Comment</div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <h5> 
+        Author : LGEUS TN R&D Department Eunbi Yoon |  Email : 
+        <a href = "mailto: eunbi1.yoon@lge.com"> eunbi1.yoon@lge.com</a>
+    </h5>
+</footer>
+  
+</body>
+</html>
