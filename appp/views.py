@@ -10,15 +10,11 @@ from django.contrib.auth.models import User, auth
 def indexView(request):
     return render(request,'index.html')
 
-# Create your views here.
-def index(request):
-    return render(request,'index.html')
-
-def logout(request):
+def logoutView(request):
     auth.logout(request)
-    return redirect('login_url')
+    return redirect('index_url')
 
-def Login(request):
+def loginView(request):
     if request.method=="POST":
         username=request.POST['username']
         password=request.POST['password']
@@ -32,7 +28,7 @@ def Login(request):
     else:
         return render(request,'login.html')
 
-def Register(request):
+def registerView(request):
     if request.method=='POST':
         fname=request.POST['fname']
         lname=request.POST['lname']

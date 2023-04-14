@@ -20,10 +20,9 @@ from django.contrib.auth.views import LoginView, LogoutView
 
 urlpatterns = [
     path('admin/',admin.site.urls),
-    path ('', views.indexView, name="home"),
-    path('index',views.index, name="index_url"),
-    path('login',views.Login, name="login_url"),
-    path('register',views.Register, name="register_url"),
-    path('logout',views.logout, name="logout_url"),
+    path ('', views.indexView, name="index_url"),
+    path('login',views.loginView, name="login_url"),
+    path('register',views.registerView, name="register_url"),
+    path('logout',views.logoutView, name="logout_url"),
     path('dashboard/bomcomparison',views.bomView, name="dash_bom_url"),
 ]
