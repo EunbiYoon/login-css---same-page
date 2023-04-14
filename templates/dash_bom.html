@@ -28,13 +28,13 @@
         <h1 class="typing-demo">
             {% block name %}
             BOM Comparison Dashboard
-            <span>{{user.username}}</span>
             {% endblock%}
         </h1>
       </div>
     </div>
     <div class="navigator">
       <div class="user-banner">
+        <div>{{user.username}}</div>
         {% if user.is_authenticated %}
             <button>
                 <a href="{% url 'logout_url' %}">Logout</a>
@@ -73,6 +73,9 @@
     <div class="navigator">
       <div class="menu">
         <div class="detail">Comment</div>
+        <span>{{user.username}}</span>
+        <textarea name="comments" id="comments"></textarea>
+        <button>submit</button>
       </div>
     </div>
   </div>
